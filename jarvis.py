@@ -3,7 +3,6 @@ import datetime
 import speech_recognition as sr
 engine = pyttsx3.init('sapi5')
 voices = engine.getProperty('voices')
-print("HAZEL VOICE IN REGISTRY : ", voices[1].id)
 engine.setProperty('voice', voices[1].id)
 
 
@@ -25,8 +24,9 @@ def wishMe():
         speak("good evening.")
 
 
-speak("I am Hazel.")
+
 
 if __name__ == "__main__":
+    speak("I am Hazel.")
     # speak("Hello World. I will be sentinent soon...")
     wishMe()
