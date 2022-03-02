@@ -15,16 +15,16 @@ def speak(audio):
 
 
 def wishMe():
+    '''announcer!'''
     hour = int(dt.datetime.now().hour)
     if hour >= 0 and hour < 6:
-        speak("It's quite late in the day. What would you like?")
+        speak("It's quite late in the day. What do you want me to do?")
     elif hour >= 6 and hour < 12:
-        speak("good morning")
+        speak("Good morning!")
     elif hour >= 12 and hour < 18:
-        speak("good afternoon")
+        speak("Good afternoon! What do you want me to do?")
     elif hour >= 18 and hour < 24:
-        speak("Good evening ")
-
+        speak("Good evening! What do you want me to do?")
 
 def takeCommand():
     '''Takes a command from user microphone and returns string output'''
