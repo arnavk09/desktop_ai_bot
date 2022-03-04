@@ -1,12 +1,19 @@
 import pyttsx3
+import wikipedia
+import webbrowser
+import os
 import speech_recognition as sr
 import datetime as dt
 from datetime import datetime
 
 engine = pyttsx3.init('sapi5')
 voices = engine.getProperty('voices')
-
 engine.setProperty('voice', voices[2].id)
+
+'''define all generic text blobs here '''
+
+bye = "Bye, see you again."
+acv = "According to Wikipedia, "
 
 
 def timeNow():
@@ -55,5 +62,21 @@ def takeCommand():
 
 if __name__ == "__main__":
     wishMe()
-    timeNow()
-    # takeCommand()
+    while True:
+        query = takeCommand().lower()
+
+        # WEB FUNCTIONALITY :
+
+        if 'wikipedia' in query:
+            speak("Searching Wikipedia for your query..")
+            query = query.replace("wikipedia", "")
+            results = wikipedia.summary(query, sentences=2)
+            speak(acv)
+            print(acv, results)
+            speak(results)
+        elif 'open youtube' in query:
+            webbrowser.open_new_tab("youtube.com")
+        elif 'play music' in query:
+            music_dir = "E:\\Downloads\\Music\\Eminem"
+            songs = os.listdir(music_dir)
+            os.startfile(os.path.join(music_dir, songs[0]))
